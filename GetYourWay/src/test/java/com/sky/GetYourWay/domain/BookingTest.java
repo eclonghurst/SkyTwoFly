@@ -1,4 +1,4 @@
 package com.sky.GetYourWay.domain;
 
-public class FlightDTO {
+public class BookingTest {
 }
