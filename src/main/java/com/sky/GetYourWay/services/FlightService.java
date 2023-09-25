@@ -4,6 +4,7 @@ package com.sky.GetYourWay.services;
 import com.sky.GetYourWay.domain.APIObjects.Datum;
 import com.sky.GetYourWay.domain.APIObjects.FlightAPIResponse;
 import com.sky.GetYourWay.dtos.FlightDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -15,14 +16,15 @@ public class FlightService {
 
     private final WebClient apiClient;
 
+    @Autowired
     public FlightService(WebClient apiClient) {
         this.apiClient = apiClient;
     }
 
-    public List<FlightDTO> getFlightsOneWay(String outboundLocation, String returnLocation, String outboundDate, String returnDate) {
+    public List<FlightDTO> getFlightsOneWay(String flyFrom, String flyTo, String outboundDateFrom, String outboundDateto) {
 
         FlightAPIResponse apiResponse = apiClient.get()
-                .uri("https://api.tequila.kiwi.com/v2/search?fly_from=" + outboundLocation + "&fly_to="+ returnLocation +"&date_from=" + outboundDate + "&date_to=" + returnDate)
+                .uri("https://api.tequila.kiwi.com/v2/search?fly_from=" + flyFrom + "&fly_to="+ flyTo +"&date_from=" + outboundDateFrom + "&date_to=" + outboundDateto)
                 .header("apikey", "BVXX0vJu26lyp1RFal0rdGumfTLiUmr2")
                 .retrieve()
                 .bodyToMono(FlightAPIResponse.class)
