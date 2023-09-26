@@ -7,6 +7,10 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 @SpringBootApplication
 public class GetYourWayApplication {
+	@Bean
+	public WebClient apiClient(){
+		return WebClient.create("");
+	}
 
 	@Bean
 	public WebClient apiClient(){
