@@ -12,6 +12,11 @@ public class GetYourWayApplication {
 		return WebClient.create("");
 	}
 
+	@Bean
+	public WebClient apiClient(){
+		return WebClient.create("");
+	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(GetYourWayApplication.class, args);
 	}

@@ -21,10 +21,11 @@ public class FlightService {
         this.apiClient = apiClient;
     }
 
-    public List<FlightDTO> getFlightsOneWay(String flyFrom, String flyTo, String outboundDateFrom, String outboundDateto) {
+    public List<FlightDTO> getFlightsOneWay(String flyFrom, String flyTo, String outboundDateFrom, String outboundDateTo) {
 
         FlightAPIResponse apiResponse = apiClient.get()
-                .uri("https://api.tequila.kiwi.com/v2/search?fly_from=" + flyFrom + "&fly_to="+ flyTo +"&date_from=" + outboundDateFrom + "&date_to=" + outboundDateto)
+                .uri("https://api.tequila.kiwi.com/v2/search?fly_from=" + flyFrom + "&fly_to="+ flyTo +"&date_from=" + outboundDateFrom + "&date_to=" + outboundDateTo)
+
                 .header("apikey", "BVXX0vJu26lyp1RFal0rdGumfTLiUmr2")
                 .retrieve()
                 .bodyToMono(FlightAPIResponse.class)
