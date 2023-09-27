@@ -25,7 +25,6 @@ public class CountryTo {
     @JsonProperty("name")
     private String name;
     @JsonIgnore
-    @Valid
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
     /**

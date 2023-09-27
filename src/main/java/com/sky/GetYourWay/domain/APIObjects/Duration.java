@@ -28,7 +28,6 @@ public class Duration {
     @JsonProperty("total")
     private Integer total;
     @JsonIgnore
-    @Valid
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
     /**

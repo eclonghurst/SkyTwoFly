@@ -22,7 +22,6 @@ public class Conversion {
     @JsonProperty("EUR")
     private Integer eur;
     @JsonIgnore
-    @Valid
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
     /**

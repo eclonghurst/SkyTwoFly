@@ -28,7 +28,6 @@ public class Fare {
     @JsonProperty("infants")
     private Integer infants;
     @JsonIgnore
-    @Valid
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
     /**

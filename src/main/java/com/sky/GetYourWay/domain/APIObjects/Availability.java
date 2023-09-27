@@ -22,7 +22,6 @@ public class Availability {
     @JsonProperty("seats")
     private Integer seats;
     @JsonIgnore
-    @Valid
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
     /**

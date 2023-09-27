@@ -69,10 +69,8 @@ public class Datum {
     @JsonProperty("cityCodeTo")
     private String cityCodeTo;
     @JsonProperty("countryFrom")
-    @Valid
     private CountryFrom countryFrom;
     @JsonProperty("countryTo")
-    @Valid
     private CountryTo countryTo;
     @JsonProperty("local_departure")
     private String localDeparture;
@@ -89,33 +87,24 @@ public class Datum {
     @JsonProperty("distance")
     private Double distance;
     @JsonProperty("duration")
-    @Valid
     private Duration duration;
     @JsonProperty("price")
     private Integer price;
     @JsonProperty("conversion")
-    @Valid
     private Conversion conversion;
     @JsonProperty("fare")
-    @Valid
     private Fare fare;
     @JsonProperty("price_dropdown")
-    @Valid
     private PriceDropdown priceDropdown;
     @JsonProperty("bags_price")
-    @Valid
     private BagsPrice bagsPrice;
     @JsonProperty("baglimit")
-    @Valid
     private Baglimit baglimit;
     @JsonProperty("availability")
-    @Valid
     private Availability availability;
     @JsonProperty("airlines")
-    @Valid
     private List<String> airlines = new ArrayList<String>();
     @JsonProperty("route")
-    @Valid
     private List<Route> route = new ArrayList<Route>();
     @JsonProperty("booking_token")
     private String bookingToken;
@@ -134,7 +123,6 @@ public class Datum {
     @JsonProperty("virtual_interlining")
     private Boolean virtualInterlining;
     @JsonIgnore
-    @Valid
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
     /**

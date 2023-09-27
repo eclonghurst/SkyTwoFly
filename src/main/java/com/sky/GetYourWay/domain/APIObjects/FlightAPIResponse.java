@@ -32,12 +32,10 @@ public class FlightAPIResponse {
     @JsonProperty("fx_rate")
     private Integer fxRate;
     @JsonProperty("data")
-    @Valid
     private List<Datum> data = new ArrayList<Datum>();
     @JsonProperty("_results")
     private Integer results;
     @JsonIgnore
-    @Valid
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
     /**

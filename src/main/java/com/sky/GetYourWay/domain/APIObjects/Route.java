@@ -97,7 +97,6 @@ public class Route {
     @JsonProperty("vehicle_type")
     private String vehicleType;
     @JsonIgnore
-    @Valid
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
     /**

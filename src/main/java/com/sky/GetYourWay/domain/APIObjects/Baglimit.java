@@ -58,7 +58,6 @@ public class Baglimit {
     @JsonProperty("hand_width")
     private Integer handWidth;
     @JsonIgnore
-    @Valid
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
     /**

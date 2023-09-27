@@ -4,18 +4,18 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
-@Entity
+//@Entity
 public class Booking {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private int bookingId;
 
-    @ManyToOne
+    //@ManyToOne
     private User user;
 
-    @NotNull
+    //@NotNull
     private String flightOutboundId;
 
     private String flightInboundId;

@@ -25,7 +25,6 @@ public class BagsPrice {
     @JsonProperty("2")
     private Integer _2;
     @JsonIgnore
-    @Valid
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
     /**

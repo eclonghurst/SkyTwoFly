@@ -25,7 +25,6 @@ public class PriceDropdown {
     @JsonProperty("fees")
     private Integer fees;
     @JsonIgnore
-    @Valid
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
     /**
