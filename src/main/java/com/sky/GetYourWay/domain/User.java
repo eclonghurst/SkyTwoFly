@@ -1,34 +1,106 @@
 package com.sky.GetYourWay.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
-//@Entity
+@Entity
+@Table(name = "users")
 public class User {
 
-    //@Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userId;
 
+    @NotNull
     private String firstName;
 
+    @NotNull
     private String lastName;
 
+    @NotNull
     private LocalDate dob;
 
+    @NotNull
+    @Column(unique = true)
     private String email;
 
     private String phoneNumber;
 
+    @NotNull
     private String password;
 
     private Boolean accountStatus;
 
+    @OneToMany(mappedBy = "user")
+    private List<Booking> bookings;
+
     public User() {
         super();
+    }
+
+    public User(String firstName, String lastName, LocalDate dob, String email, String phoneNumber, String password) {
+        super();
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dob = dob;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.password = password;
+        this.bookings = new ArrayList<>();
+    }
+
+    public User(String firstName, String lastName, LocalDate dob, String email, String phoneNumber, String password, Booking booking) {
+        super();
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dob = dob;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.password = password;
+        this.bookings = new ArrayList<>();
+        this.bookings.add(booking);
+    }
+
+    public User(int userId, String firstName, String lastName, LocalDate dob, String email, String phoneNumber, String password, Boolean accountStatus, List<Booking> bookings) {
+        super();
+        this.userId = userId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dob = dob;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.password = password;
+        this.accountStatus = accountStatus;
+        this.bookings = bookings;
+    }
+
+    public String getFullName(){
+        return firstName + " " + lastName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return userId == user.userId && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(dob, user.dob) && Objects.equals(email, user.email) && Objects.equals(phoneNumber, user.phoneNumber) && Objects.equals(password, user.password) && Objects.equals(accountStatus, user.accountStatus) && Objects.equals(bookings, user.bookings);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userId, firstName, lastName, dob, email, phoneNumber, password, accountStatus, bookings);
+    }
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
     }
 
     public int getUserId() {

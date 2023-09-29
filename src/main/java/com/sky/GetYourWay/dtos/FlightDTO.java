@@ -18,8 +18,8 @@ public class FlightDTO {
     private String bookingToken;
     private List<String> airlines;
     private Fare fare;
+    private String cabin;
     private List<Route> routes;
-
 
 
     public FlightDTO(String flyFrom, String flyTo, String cityFrom, String cityTo, Integer duration, String localDeparture, String localArrival, Integer availableSeats, String bookingToken, List<String> airlines, List<Route> route, Fare fare) {
