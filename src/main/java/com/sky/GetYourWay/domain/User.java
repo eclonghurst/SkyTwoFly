@@ -22,7 +22,7 @@ public class User {
     private String lastName;
 
     @NotNull
-    private LocalDate dob;
+    private String dob;
 
     @NotNull
     @Column(unique = true)
@@ -42,7 +42,7 @@ public class User {
         super();
     }
 
-    public User(String firstName, String lastName, LocalDate dob, String email, String phoneNumber, String password) {
+    public User(String firstName, String lastName, String dob, String email, String phoneNumber, String password) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
@@ -53,7 +53,7 @@ public class User {
         this.bookings = new ArrayList<>();
     }
 
-    public User(String firstName, String lastName, LocalDate dob, String email, String phoneNumber, String password, Booking booking) {
+    public User(String firstName, String lastName, String dob, String email, String phoneNumber, String password, Booking booking) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
@@ -65,7 +65,7 @@ public class User {
         this.bookings.add(booking);
     }
 
-    public User(int userId, String firstName, String lastName, LocalDate dob, String email, String phoneNumber, String password, Boolean accountStatus, List<Booking> bookings) {
+    public User(int userId, String firstName, String lastName, String dob, String email, String phoneNumber, String password, Boolean accountStatus, List<Booking> bookings) {
         super();
         this.userId = userId;
         this.firstName = firstName;
@@ -80,6 +80,21 @@ public class User {
 
     public String getFullName(){
         return firstName + " " + lastName;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", dob='" + dob + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", password='" + password + '\'' +
+                ", accountStatus=" + accountStatus +
+                ", bookings=" + bookings +
+                '}';
     }
 
     @Override
@@ -127,11 +142,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public LocalDate getDob() {
+    public String getDob() {
         return dob;
     }
 
-    public void setDob(LocalDate dob) {
+    public void setDob(String dob) {
         this.dob = dob;
     }
 

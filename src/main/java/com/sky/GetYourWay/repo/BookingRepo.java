@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface BookingRepo extends JpaRepository<Booking, Integer> {
 
-    List<Booking> findAllByUserId(Integer userId);
+    List<Booking> findAllByUserUserId(Integer userId);
 }

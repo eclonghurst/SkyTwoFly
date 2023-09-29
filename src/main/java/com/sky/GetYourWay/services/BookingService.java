@@ -19,8 +19,8 @@ public class BookingService {
         return bookingRepo.save(booking);
     }
 
-    public List<Booking> getAllBookingsByUser(Integer userId) {
-        return bookingRepo.findAllByUserId(userId);
+    public List<Booking> getAllBookingsByUserID(Integer userId) {
+        return bookingRepo.findAllByUserUserId(userId);
     }
 
     public String deleteBookingByID(int bookingID){
@@ -30,5 +30,9 @@ public class BookingService {
         }
         else
             return "Booking not found";
+    }
+
+    public Booking getBookingByID(int bookingID) {
+        return bookingRepo.findById(bookingID).orElse(null);
     }
 }

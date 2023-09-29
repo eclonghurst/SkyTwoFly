@@ -102,7 +102,7 @@ public class Booking {
                 ", fare=" + fare +
                 ", routes=" + routes +
                 ", bookingDate='" + bookingDate + '\'' +
-                ", user=" + user +
+                ", user=" + user.getUserId() +
                 '}';
     }
 

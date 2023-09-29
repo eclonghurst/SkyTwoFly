@@ -77,7 +77,7 @@ public class BookingRoute {
     public String toString() {
         return "BookingRoute{" +
                 "routeID='" + routeID + '\'' +
-                ", booking=" + booking +
+                ", booking=" + booking.getBookingId() +
                 ", airportFrom='" + airportFrom + '\'' +
                 ", airportTo='" + airportTo + '\'' +
                 ", cityFrom='" + cityFrom + '\'' +
