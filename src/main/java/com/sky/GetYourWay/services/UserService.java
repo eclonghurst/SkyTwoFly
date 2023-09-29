@@ -25,5 +25,7 @@ public class UserService {
         return userRepo.findByEmailIgnoreCase(email);
     }
 
-
+    public void deleteUser(User user) {
+        userRepo.delete(user);
+    }
 }
