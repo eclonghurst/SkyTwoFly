@@ -1,21 +1,22 @@
 package com.sky.GetYourWay.domain;
 
 import com.sky.GetYourWay.domain.APIObjects.Route;
+import org.hibernate.annotations.Fetch;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import java.time.LocalTime;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 public class BookingRoute {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int bookingRouteID;
+
     private String routeID;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn
     private Booking booking;
 
     private String airportFrom;
@@ -65,19 +66,20 @@ public class BookingRoute {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         BookingRoute that = (BookingRoute) o;
-        return partOfReturnTrip == that.partOfReturnTrip && Objects.equals(routeID, that.routeID) && Objects.equals(booking, that.booking) && Objects.equals(airportFrom, that.airportFrom) && Objects.equals(airportTo, that.airportTo) && Objects.equals(cityFrom, that.cityFrom) && Objects.equals(cityTo, that.cityTo) && Objects.equals(localDeparture, that.localDeparture) && Objects.equals(localArrival, that.localArrival) && Objects.equals(airline, that.airline) && Objects.equals(cabin, that.cabin);
+        return bookingRouteID == that.bookingRouteID && partOfReturnTrip == that.partOfReturnTrip && Objects.equals(routeID, that.routeID) && Objects.equals(booking, that.booking) && Objects.equals(airportFrom, that.airportFrom) && Objects.equals(airportTo, that.airportTo) && Objects.equals(cityFrom, that.cityFrom) && Objects.equals(cityTo, that.cityTo) && Objects.equals(localDeparture, that.localDeparture) && Objects.equals(localArrival, that.localArrival) && Objects.equals(airline, that.airline) && Objects.equals(cabin, that.cabin);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(routeID, booking, airportFrom, airportTo, cityFrom, cityTo, localDeparture, localArrival, airline, cabin, partOfReturnTrip);
+        return Objects.hash(bookingRouteID, routeID, booking, airportFrom, airportTo, cityFrom, cityTo, localDeparture, localArrival, airline, cabin, partOfReturnTrip);
     }
 
     @Override
     public String toString() {
         return "BookingRoute{" +
-                "routeID='" + routeID + '\'' +
-                ", booking=" + booking.getBookingId() +
+                "bookingRouteID=" + bookingRouteID +
+                ", routeID='" + routeID + '\'' +
+                ", booking=" + booking +
                 ", airportFrom='" + airportFrom + '\'' +
                 ", airportTo='" + airportTo + '\'' +
                 ", cityFrom='" + cityFrom + '\'' +

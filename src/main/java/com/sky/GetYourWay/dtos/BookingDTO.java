@@ -2,15 +2,12 @@ package com.sky.GetYourWay.dtos;
 
 import com.sky.GetYourWay.domain.Booking;
 import com.sky.GetYourWay.domain.BookingRoute;
-import com.sky.GetYourWay.domain.User;
 
-import javax.persistence.CascadeType;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookingDTO {
-    private int bookingId;       //auto-generated
+    private int bookingID;       //auto-generated
 
     private String flightNumber;
     private String flightFrom;    //airport codes
@@ -31,7 +28,7 @@ public class BookingDTO {
     private int adults;              //no. of seats booked
     private int fare;
 
-    private List<BookingRoute> routes;
+    private List<BookingRouteDTO> routes;
 
     private String bookingDate;
 
@@ -39,7 +36,7 @@ public class BookingDTO {
 
     public BookingDTO(Booking booking) {
         super();
-        this.bookingId = booking.getBookingId();
+        this.bookingID = booking.getBookingID();
         this.flightNumber = booking.getFlightNumber();
         this.flightFrom = booking.getFlightFrom();
         this.flightTo = booking.getFlightTo();
@@ -54,7 +51,14 @@ public class BookingDTO {
         this.localArrivalReturn = booking.getLocalArrivalReturn();
         this.adults = booking.getAdults();
         this.fare = booking.getFare();
-        this.routes = booking.getRoutes();
+        routes = new ArrayList<>();
+
+        if (booking.getRoutes() != null) {
+            for (BookingRoute route : booking.getRoutes()) {
+                this.routes.add(new BookingRouteDTO(route));
+            }
+        }
+
         this.bookingDate = booking.getBookingDate();
         this.userID = booking.getUser().getUserId();
     }
@@ -63,12 +67,12 @@ public class BookingDTO {
         super();
     }
 
-    public int getBookingId() {
-        return bookingId;
+    public int getBookingID() {
+        return bookingID;
     }
 
-    public void setBookingId(int bookingId) {
-        this.bookingId = bookingId;
+    public void setBookingID(int bookingID) {
+        this.bookingID = bookingID;
     }
 
     public String getFlightNumber() {
@@ -183,11 +187,11 @@ public class BookingDTO {
         this.fare = fare;
     }
 
-    public List<BookingRoute> getRoutes() {
+    public List<BookingRouteDTO> getRoutes() {
         return routes;
     }
 
-    public void setRoutes(List<BookingRoute> routes) {
+    public void setRoutes(List<BookingRouteDTO> routes) {
         this.routes = routes;
     }
 

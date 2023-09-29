@@ -21,7 +21,6 @@ public class User {
     @NotNull
     private String lastName;
 
-    @NotNull
     private String dob;
 
     @NotNull
@@ -35,7 +34,7 @@ public class User {
 
     private Boolean accountStatus;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Booking> bookings;
 
     public User() {

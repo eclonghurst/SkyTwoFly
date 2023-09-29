@@ -2,8 +2,11 @@ package com.sky.GetYourWay.rest;
 
 
 import com.sky.GetYourWay.domain.Booking;
+import com.sky.GetYourWay.domain.BookingRoute;
 import com.sky.GetYourWay.dtos.BookingDTO;
+import com.sky.GetYourWay.services.BookingRouteService;
 import com.sky.GetYourWay.services.BookingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,15 +18,33 @@ import java.util.List;
 @RequestMapping("/bookings")
 public class BookingController {
 
+    @Autowired
     private final BookingService bookingService;
 
-    public BookingController(BookingService bookingService) {
+    @Autowired
+    private final BookingRouteService bookingRouteService;
+
+    public BookingController(BookingService bookingService, BookingRouteService bookingRouteService) {
         this.bookingService = bookingService;
+        this.bookingRouteService = bookingRouteService;
     }
+
+//    @PostMapping("/create")
+//    public ResponseEntity<BookingDTO> makeBooking(@RequestBody Booking booking) {
+//        Booking made = this.bookingService.makeBooking(booking);
+//        return new ResponseEntity<>(new BookingDTO(made), HttpStatus.CREATED);
+//    }
 
     @PostMapping("/create")
     public ResponseEntity<BookingDTO> makeBooking(@RequestBody Booking booking) {
+        List<BookingRoute> routes = booking.getRoutes();
+        booking.setRoutes(null);
         Booking made = this.bookingService.makeBooking(booking);
+        int id = made.getBookingID();
+        for (BookingRoute route : routes) {
+            route.setBooking(made);
+            bookingRouteService.saveBookingRoute(route);
+        }
         return new ResponseEntity<>(new BookingDTO(made), HttpStatus.CREATED);
     }
 

@@ -1,12 +1,6 @@
 package com.sky.GetYourWay.domain;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.sky.GetYourWay.domain.APIObjects.Fare;
-import com.sky.GetYourWay.domain.APIObjects.Route;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,7 +8,7 @@ import java.util.Objects;
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int bookingId;       //auto-generated
+    private int bookingID;       //auto-generated
 
     private String flightNumber;
     private String flightFrom;    //airport codes
@@ -49,7 +43,7 @@ public class Booking {
     }
 
     public Booking(int bookingId, String flightNumber, String flightFrom, String flightTo, String cityFrom, String cityTo, String outboundDate, String localDeparture, String localArrival, boolean returnTrip, String returnDate, String localDepartureReturn, String localArrivalReturn, int adults, int fare, List<BookingRoute> routes, String bookingDate, User user) {
-        this.bookingId = bookingId;
+        this.bookingID = bookingId;
         this.flightNumber = flightNumber;
         this.flightFrom = flightFrom;
         this.flightTo = flightTo;
@@ -74,18 +68,18 @@ public class Booking {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Booking booking = (Booking) o;
-        return bookingId == booking.bookingId && returnTrip == booking.returnTrip && adults == booking.adults && fare == booking.fare && Objects.equals(flightNumber, booking.flightNumber) && Objects.equals(flightFrom, booking.flightFrom) && Objects.equals(flightTo, booking.flightTo) && Objects.equals(cityFrom, booking.cityFrom) && Objects.equals(cityTo, booking.cityTo) && Objects.equals(outboundDate, booking.outboundDate) && Objects.equals(localDeparture, booking.localDeparture) && Objects.equals(localArrival, booking.localArrival) && Objects.equals(returnDate, booking.returnDate) && Objects.equals(localDepartureReturn, booking.localDepartureReturn) && Objects.equals(localArrivalReturn, booking.localArrivalReturn) && Objects.equals(routes, booking.routes) && Objects.equals(bookingDate, booking.bookingDate) && Objects.equals(user, booking.user);
+        return bookingID == booking.bookingID && returnTrip == booking.returnTrip && adults == booking.adults && fare == booking.fare && Objects.equals(flightNumber, booking.flightNumber) && Objects.equals(flightFrom, booking.flightFrom) && Objects.equals(flightTo, booking.flightTo) && Objects.equals(cityFrom, booking.cityFrom) && Objects.equals(cityTo, booking.cityTo) && Objects.equals(outboundDate, booking.outboundDate) && Objects.equals(localDeparture, booking.localDeparture) && Objects.equals(localArrival, booking.localArrival) && Objects.equals(returnDate, booking.returnDate) && Objects.equals(localDepartureReturn, booking.localDepartureReturn) && Objects.equals(localArrivalReturn, booking.localArrivalReturn) && Objects.equals(routes, booking.routes) && Objects.equals(bookingDate, booking.bookingDate) && Objects.equals(user, booking.user);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(bookingId, flightNumber, flightFrom, flightTo, cityFrom, cityTo, outboundDate, localDeparture, localArrival, returnTrip, returnDate, localDepartureReturn, localArrivalReturn, adults, fare, routes, bookingDate, user);
+        return Objects.hash(bookingID, flightNumber, flightFrom, flightTo, cityFrom, cityTo, outboundDate, localDeparture, localArrival, returnTrip, returnDate, localDepartureReturn, localArrivalReturn, adults, fare, routes, bookingDate, user);
     }
 
     @Override
     public String toString() {
         return "Booking{" +
-                "bookingId=" + bookingId +
+                "bookingID=" + bookingID +
                 ", flightNumber='" + flightNumber + '\'' +
                 ", flightFrom='" + flightFrom + '\'' +
                 ", flightTo='" + flightTo + '\'' +
@@ -106,12 +100,12 @@ public class Booking {
                 '}';
     }
 
-    public int getBookingId() {
-        return bookingId;
+    public int getBookingID() {
+        return bookingID;
     }
 
-    public void setBookingId(int bookingId) {
-        this.bookingId = bookingId;
+    public void setBookingID(int bookingID) {
+        this.bookingID = bookingID;
     }
 
     public String getFlightNumber() {
