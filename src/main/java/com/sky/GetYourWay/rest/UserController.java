@@ -5,6 +5,8 @@ import com.sky.GetYourWay.dtos.UserDTO;
 import com.sky.GetYourWay.services.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,8 +19,8 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/register")
-    public ResponseEntity<String> registerUser(@RequestBody User user) {
+    @PostMapping("/register")
+    public ResponseEntity<String> registerUser(@RequestBody @Validated User user) {
         return ResponseEntity.ok(userService.registerUser(user));
     }
 
@@ -38,6 +40,11 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         else
             return new ResponseEntity<>(new UserDTO(found), HttpStatus.OK);
+    }
+
+    @GetMapping("/user")
+    public String getCurrentUser() {
+        return SecurityContextHolder.getContext().getAuthentication().getName();
     }
 
     @DeleteMapping("/delete/{id}")
