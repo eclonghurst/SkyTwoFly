@@ -64,7 +64,9 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
-        http.cors(cors -> cors.configurationSource(this.corsConfigurationSource()));
+        //http.cors(cors -> cors.configurationSource(this.corsConfigurationSource()));
+        http.cors().disable();
+
         http.formLogin().loginProcessingUrl("/login").successHandler(new AuthenticationSuccessHandler() {
             @Override
             public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
